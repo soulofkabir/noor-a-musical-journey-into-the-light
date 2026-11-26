@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NOOR — A Musical Journey into the Light</title>
+<meta name="description" content="NOOR is a short musical biopic on the spiritual life of Pirzadi Noor-un-Nisa Inayat Khan: a young girl opening to the universal Light. Watch the trailer.">
+<meta property="og:title" content="NOOR — A Musical Journey into the Light">
+<meta property="og:description" content="A short musical biopic on the spiritual life of Pirzadi Noor-un-Nisa Inayat Khan.">
+<meta property="og:image" content="assets/poster.jpg">
+<meta property="og:type" content="video.movie">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#03030a; --indigo:#0b0d24; --gold:#f3cf86; --gold-soft:#ffe6b0; --ivory:#fff6e0;
+  --muted:#b9b2c9; --line:rgba(243,207,134,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--ivory);font-family:"Cormorant Garamond",Georgia,serif;font-size:20px;line-height:1.65;overflow-x:hidden}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.nebula{position:fixed;inset:-20%;z-index:0;pointer-events:none;
+  background:
+   radial-gradient(40% 35% at 20% 25%,rgba(70,60,160,.22),transparent 70%),
+   radial-gradient(35% 30% at 80% 70%,rgba(160,90,60,.16),transparent 70%),
+   radial-gradient(50% 40% at 50% 110%,rgba(243,207,134,.10),transparent 70%);
+  animation:drift 60s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(3%,-2%) scale(1.05)}}
+main{position:relative;z-index:1}
+section{padding:110px 24px;max-width:1100px;margin:0 auto}
+.glow{text-shadow:0 0 18px rgba(255,214,140,.75),0 0 60px rgba(255,180,80,.35)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:40px}
+.point{width:12px;height:12px;border-radius:50%;background:#fff;
+  box-shadow:0 0 14px 5px #fff1c8,0 0 50px 18px rgba(255,200,110,.6),0 0 140px 50px rgba(255,170,70,.25);
+  animation:pulse 4s ease-in-out infinite;margin-bottom:40px}
+@keyframes pulse{50%{transform:scale(1.35);box-shadow:0 0 20px 8px #fff1c8,0 0 70px 26px rgba(255,200,110,.7),0 0 180px 70px rgba(255,170,70,.3)}}
+.ar{font-family:Amiri,serif;direction:rtl}
+.hero .ar{font-size:clamp(56px,9vw,110px);line-height:1;color:var(--gold-soft);opacity:0;animation:rise 2s .4s forwards}
+.hero h1{font-weight:500;font-size:clamp(64px,13vw,170px);letter-spacing:.32em;margin-right:-.32em;line-height:1.05;opacity:0;animation:rise 2.2s .9s forwards}
+.rule{width:min(420px,70vw);height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:22px auto;opacity:0;animation:rise 2s 1.4s forwards}
+.tag{font-style:italic;font-weight:300;font-size:clamp(22px,3vw,34px);letter-spacing:.08em;opacity:0;animation:rise 2s 1.7s forwards}
+.sub{color:var(--muted);font-size:18px;letter-spacing:.2em;text-transform:uppercase;margin-top:18px;opacity:0;animation:rise 2s 2.1s forwards}
+@keyframes rise{from{opacity:0;transform:translateY(14px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.cta{margin-top:46px;display:inline-flex;align-items:center;gap:14px;padding:14px 34px;border:1px solid var(--line);border-radius:999px;
+  color:var(--gold-soft);text-decoration:none;font-size:20px;letter-spacing:.14em;text-transform:uppercase;background:rgba(243,207,134,.06);
+  transition:.4s;opacity:0;animation:rise 2s 2.5s forwards}
+.cta:hover{background:rgba(243,207,134,.16);box-shadow:0 0 40px rgba(243,207,134,.25)}
+.cta svg{width:14px;height:14px;fill:currentColor}
+.scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:14px;letter-spacing:.3em;text-transform:uppercase;opacity:.7}
+
+/* TRAILER STAGE */
+.kicker{color:var(--gold);letter-spacing:.35em;text-transform:uppercase;font-size:15px;text-align:center}
+h2{font-weight:400;font-size:clamp(36px,5vw,58px);text-align:center;line-height:1.2;margin:10px 0 40px}
+.stage{position:relative;border-radius:14px;padding:1px;background:linear-gradient(140deg,rgba(243,207,134,.6),rgba(90,80,200,.25) 40%,rgba(243,207,134,.45));
+  box-shadow:0 0 80px rgba(243,207,134,.18),0 40px 120px rgba(0,0,0,.7)}
+.stage::before{content:"";position:absolute;left:10%;right:10%;bottom:-60px;height:80px;background:radial-gradient(50% 50% at 50% 0,rgba(243,207,134,.25),transparent);filter:blur(10px);z-index:-1}
+.screen{position:relative;border-radius:13px;overflow:hidden;background:#000;aspect-ratio:16/9}
+.screen video{width:100%;height:100%;display:block;object-fit:cover}
+.play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;border:0;cursor:pointer;
+  background:radial-gradient(60% 60% at 50% 50%,rgba(3,3,10,.15),rgba(3,3,10,.65));color:var(--ivory);font-family:inherit;transition:opacity .6s}
+.play .btn{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,230,176,.7);
+  background:rgba(243,207,134,.12);backdrop-filter:blur(4px);box-shadow:0 0 50px rgba(243,207,134,.45);transition:.4s}
+.play:hover .btn{transform:scale(1.08);box-shadow:0 0 80px rgba(243,207,134,.7)}
+.play .btn svg{width:30px;height:30px;fill:var(--ivory);margin-left:6px}
+.play span{letter-spacing:.3em;text-transform:uppercase;font-size:16px}
+.play.hidden{opacity:0;pointer-events:none}
+.meta{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:34px;color:var(--muted);font-size:17px;letter-spacing:.15em;text-transform:uppercase}
+.meta b{color:var(--gold-soft);font-weight:500}
+
+/* STORY */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.story p{color:#e9e2d2;margin-bottom:18px}
+.story p.lead{font-size:26px;line-height:1.5;color:var(--ivory)}
+.portrait{border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 0 60px rgba(243,207,134,.12)}
+.portrait img{width:100%;display:block}
+
+/* NAME */
+.name{text-align:center}
+.name .ar{font-size:clamp(90px,14vw,170px);color:var(--gold-soft);line-height:1.2}
+.verse{font-style:italic;font-size:clamp(24px,3vw,32px);max-width:760px;margin:10px auto 8px}
+.cite{color:var(--muted);font-size:16px;letter-spacing:.2em;text-transform:uppercase}
+.name p.body{max-width:720px;margin:30px auto 0;color:#e9e2d2}
+
+/* JOURNEY */
+.journey{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;background:#000}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s ease,filter 1s;filter:saturate(.9) brightness(.85)}
+.card:hover img{transform:scale(1.06);filter:saturate(1) brightness(1)}
+.card .cap{position:absolute;left:0;right:0;bottom:0;padding:70px 22px 22px;background:linear-gradient(transparent,rgba(3,3,10,.92))}
+.card h3{font-weight:500;font-size:28px;letter-spacing:.06em}
+.card p{font-size:17px;color:#ddd4c2;font-style:italic;line-height:1.4}
+
+/* CLOSING */
+.closing{text-align:center;padding-bottom:70px}
+.closing blockquote{font-size:clamp(28px,4vw,44px);font-style:italic;font-weight:300;max-width:820px;margin:0 auto 30px;line-height:1.35}
+footer{position:relative;z-index:1;text-align:center;padding:50px 24px 60px;color:var(--muted);font-size:15px;letter-spacing:.12em;border-top:1px solid rgba(243,207,134,.12)}
+footer .ar{font-size:34px;color:var(--gold);display:block;margin-bottom:8px}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1.4s ease,transform 1.4s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:820px){
+  body{font-size:18px}
+  section{padding:80px 16px}
+  .story{grid-template-columns:1fr;gap:34px}
+  .journey{grid-template-columns:1fr 1fr}
+  .play .btn{width:72px;height:72px}
+}
+@media (max-width:520px){.journey{grid-template-columns:1fr}.card{aspect-ratio:16/11}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero *,.reveal{opacity:1!important;transform:none!important;filter:none!important}}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="nebula" aria-hidden="true"></div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="point" aria-hidden="true"></div>
+    <div class="ar glow" lang="ar">نور</div>
+    <h1 class="glow">NOOR</h1>
+    <div class="rule"></div>
+    <p class="tag">A Musical Journey into the Light</p>
+    <p class="sub">The spiritual life of Pirzadi Noor-un-Nisa Inayat Khan</p>
+    <a class="cta" href="#trailer"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg>Watch the Trailer</a>
+    <div class="scroll">Scroll</div>
+  </section>
+
+  <!-- TRAILER -->
+  <section id="trailer" class="reveal">
+    <p class="kicker">Official Trailer</p>
+    <h2>Her name… was Light</h2>
+    <div class="stage">
+      <div class="screen">
+        <video id="film" preload="none" playsinline poster="assets/poster.jpg"></video>
+        <button class="play" id="playBtn" aria-label="Play the trailer">
+          <div class="btn"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></div>
+          <span>Play Trailer</span>
+        </button>
+      </div>
+    </div>
+    <div class="meta">
+      <div><b>Genre</b> · Musical Biopic</div>
+      <div><b>Runtime</b> · Short Film</div>
+      <div><b>Trailer</b> · 1 min 23 s</div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story reveal">
+    <div>
+      <p class="kicker" style="text-align:left">The Film</p>
+      <h2 style="text-align:left;margin-bottom:26px">A musical treatise on the soul</h2>
+      <p class="lead">Before she was a heroine, she was a seeker.</p>
+      <p>NOOR is a short musical biopic that turns away from the battlefield and toward the heart. It follows Pirzadi Noor-un-Nisa Inayat Khan as a young girl — beautiful, innocent, curious and mystical — opening, step by step, to the universal spiritual realm.</p>
+      <p>Raised in a garden house outside Paris by her father, the Sufi master and musician Hazrat Inayat Khan, she listened to the wind as if it were a teacher, played the harp and the veena as though in prayer, and wrote stories of compassion. Told through voice, music and light, the film traces only her inner journey.</p>
+    </div>
+    <div class="portrait"><img src="assets/still-garden.jpg" alt="Young Noor standing in a sunlit garden" loading="lazy"></div>
+  </section>
+
+  <!-- NAME -->
+  <section class="name reveal">
+    <p class="kicker">The Meaning of Her Name</p>
+    <div class="ar glow" lang="ar">نور</div>
+    <p class="verse">“God is the Light of the heavens and the earth.”</p>
+    <p class="cite">Qur’an 24:35 · Ayat an-Nur</p>
+    <p class="body"><em>Noor</em> — or <em>Nur</em> — is the pure cosmic Light that emanates from the One and spreads through all the universe. The film begins and ends in that Light: a single point in the darkness that becomes a girl, and a girl who walks, lamp in hand, back into the Light she came from.</p>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="reveal">
+    <p class="kicker">The Journey</p>
+    <h2>Six movements of the heart</h2>
+    <div class="journey">
+      <figure class="card"><img src="assets/still-father.jpg" alt="Noor with her father in the garden" loading="lazy"><figcaption class="cap"><h3>The Name</h3><p>“You came from the Light… and you will return it to the world.”</p></figcaption></figure>
+      <figure class="card"><img src="assets/still-stars.jpg" alt="Noor at a window gazing at the stars" loading="lazy"><figcaption class="cap"><h3>The Stars</h3><p>“Every star is singing… can you hear it?”</p></figcaption></figure>
+      <figure class="card"><img src="assets/still-harp.jpg" alt="Noor playing the harp in the garden" loading="lazy"><figcaption class="cap"><h3>The Music</h3><p>She played the harp as though she were praying.</p></figcaption></figure>
+      <figure class="card"><img src="assets/still-birds.jpg" alt="Noor with songbirds among wildflowers" loading="lazy"><figcaption class="cap"><h3>The Garden</h3><p>She spoke to birds, to flowers… to silence.</p></figcaption></figure>
+      <figure class="card"><img src="assets/still-lamp.jpg" alt="Noor carrying a lamp through a dark hallway" loading="lazy"><figcaption class="cap"><h3>The Lamp</h3><p>“I am not afraid of the dark… for I carry the lamp within.”</p></figcaption></figure>
+      <figure class="card"><img src="assets/still-light.jpg" alt="Noor walking a path of light toward the One Light" loading="lazy"><figcaption class="cap"><h3>The One Light</h3><p>A flame that no shadow could put out.</p></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing reveal">
+    <blockquote>A seeker. A musician. A mystic.<br>A flame that no shadow could put out.</blockquote>
+    <a class="cta" style="opacity:1;animation:none" href="#trailer"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg>Watch Again</a>
+  </section>
+</main>
+
+<footer>
+  <span class="ar" lang="ar">نور</span>
+  NOOR — A Musical Journey into the Light<br>
+  Pirzadi Noor-un-Nisa Inayat Khan
+</footer>
+
+<script>
+// Starfield
+const c=document.getElementById('sky'),x=c.getContext('2d');let W,H,stars=[];
+function size(){W=c.width=innerWidth*devicePixelRatio;H=c.height=innerHeight*devicePixelRatio;
+  stars=Array.from({length:Math.min(420,Math.floor(W*H/9000))},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.3*devicePixelRatio+.2,
+  p:Math.random()*6.28,s:.004+Math.random()*.012,g:Math.random()<.12}))}
+size();addEventListener('resize',size);
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function draw(){x.clearRect(0,0,W,H);for(const s of stars){s.p+=s.s;const a=.35+.65*Math.abs(Math.sin(s.p));
+  x.beginPath();x.arc(s.x,s.y,s.r,0,6.28);x.fillStyle=s.g?`rgba(255,220,150,${a})`:`rgba(230,232,255,${a*.85})`;x.fill();
+  s.y-=.03;if(s.y<0)s.y=H}
+  if(!still)requestAnimationFrame(draw)}
+draw();
+
+// Trailer
+const v=document.getElementById('film'),b=document.getElementById('playBtn');
+// The trailer is stored in 3 parts (GitHub upload limits) and joined here in the browser.
+const parts=['assets/noor-trailer.mp4.part0','assets/noor-trailer.mp4.part1','assets/noor-trailer.mp4.part2'];
+let ready=null;
+function loadTrailer(){ if(!ready) ready=Promise.all(parts.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error(p);return r.blob()})))
+  .then(bs=>{v.src=URL.createObjectURL(new Blob(bs,{type:'video/mp4'}));}); return ready; }
+const label=b.querySelector('span');
+b.addEventListener('click',()=>{label.textContent='Loading…';
+  loadTrailer().then(()=>{v.controls=true;v.play();b.classList.add('hidden');label.textContent='Play Trailer'})
+  .catch(()=>{label.textContent='Could not load — tap to retry';ready=null});});
+// start downloading quietly once the trailer section comes into view
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){loadTrailer().catch(()=>{ready=null});o.disconnect()}},{rootMargin:'400px'}).observe(document.getElementById('trailer'));
+v.addEventListener('ended',()=>{b.classList.remove('hidden');label.textContent='Watch Again';v.controls=false});
+
+// Reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
