@@ -71,6 +71,28 @@ h2{font-weight:400;font-size:clamp(36px,5vw,58px);text-align:center;line-height:
 .meta{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:34px;color:var(--muted);font-size:17px;letter-spacing:.15em;text-transform:uppercase}
 .meta b{color:var(--gold-soft);font-weight:500}
 
+
+/* CINEMA MODE */
+.stage-slot{aspect-ratio:16/9;position:relative}
+#cinemaBg{position:fixed;inset:0;z-index:50;opacity:0;pointer-events:none;transition:opacity 1.4s ease;
+  background:radial-gradient(70% 60% at 50% 50%,rgba(30,22,10,.55),rgba(0,0,0,.97) 70%),#000}
+body.cinema #cinemaBg{opacity:1;pointer-events:auto;cursor:pointer}
+body.cinema{overflow:hidden}
+body.cinema main{z-index:40}
+.stage.theatre{position:fixed;left:50%;top:48%;z-index:60;width:min(94vw,calc(84vh*16/9));transform:translate(-50%,-50%);
+  box-shadow:0 0 160px rgba(243,207,134,.28),0 0 60px rgba(243,207,134,.18);animation:cinemaIn 1.2s cubic-bezier(.2,.7,.2,1)}
+@keyframes cinemaIn{from{opacity:0;transform:translate(-50%,-50%) scale(.9)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.stage.theatre::before{display:none}
+#cinemaClose{position:fixed;top:22px;right:26px;z-index:70;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,230,176,.45);
+  background:rgba(243,207,134,.08);color:var(--ivory);font-size:30px;line-height:1;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .8s .6s,background .3s}
+#cinemaClose:hover{background:rgba(243,207,134,.2)}
+#cinemaCap{position:fixed;left:0;right:0;bottom:3.5vh;z-index:60;text-align:center;color:var(--gold-soft);letter-spacing:.28em;text-transform:uppercase;font-size:14px;
+  opacity:0;pointer-events:none;transition:opacity 1.2s .8s}
+#cinemaCap .ar{letter-spacing:0;font-size:20px;margin-right:8px;text-transform:none}
+body.cinema #cinemaClose,body.cinema #cinemaCap{opacity:1;pointer-events:auto}
+body.cinema #cinemaCap{pointer-events:none}
+@media (max-width:820px){.stage.theatre{width:100vw;border-radius:0}#cinemaCap{font-size:11px}}
+
 /* STORY */
 .story{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .story p{color:#e9e2d2;margin-bottom:18px}
@@ -159,7 +181,7 @@ footer .ar{font-size:34px;color:var(--gold);display:block;margin-bottom:8px}
   <section id="trailer" class="reveal">
     <p class="kicker">Official Trailer</p>
     <h2>Her name… was Light</h2>
-    <div class="stage">
+    <div class="stage-slot"><div class="stage">
       <div class="screen">
         <video id="film" preload="none" playsinline poster="assets/poster.jpg"></video>
         <button class="play" id="playBtn" aria-label="Play the trailer">
@@ -167,6 +189,7 @@ footer .ar{font-size:34px;color:var(--gold);display:block;margin-bottom:8px}
           <span>Play Trailer</span>
         </button>
       </div>
+    </div>
     </div>
     <div class="meta">
       <div><b>Format</b> · Short Film</div>
@@ -222,8 +245,11 @@ footer .ar{font-size:34px;color:var(--gold);display:block;margin-bottom:8px}
       <span class="lib-word" lang="fr">Liberté…</span>
       <span class="lib-note">The freedom of a soul that had already found the Light.</span>
     </div>
-    <a class="cta" style="opacity:1;animation:none" href="#trailer"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg>Watch Again</a>
+    <a class="cta" style="opacity:1;animation:none" href="#trailer" onclick="setTimeout(()=>document.getElementById('playBtn').click(),700)"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg>Watch Again</a>
   </section>
+<div id="cinemaBg" aria-hidden="true"></div>
+<button id="cinemaClose" aria-label="Close the trailer">&times;</button>
+<div id="cinemaCap" aria-hidden="true"><span class="ar" lang="ar">نور</span> NOOR · A Musical Journey into the Light</div>
 </main>
 
 <footer>
@@ -255,11 +281,19 @@ function loadTrailer(){ if(!ready) ready=Promise.all(parts.map(p=>fetch(p).then(
   .then(bs=>{v.src=URL.createObjectURL(new Blob(bs,{type:'video/mp4'}));}); return ready; }
 const label=b.querySelector('span');
 b.addEventListener('click',()=>{label.textContent='Loading…';
-  loadTrailer().then(()=>{v.controls=true;v.play();b.classList.add('hidden');label.textContent='Play Trailer'})
+  loadTrailer().then(()=>{enterCinema();v.controls=true;v.play();b.classList.add('hidden');label.textContent='Play Trailer'})
   .catch(()=>{label.textContent='Could not load — tap to retry';ready=null});});
 // start downloading quietly once the trailer section comes into view
 new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){loadTrailer().catch(()=>{ready=null});o.disconnect()}},{rootMargin:'400px'}).observe(document.getElementById('trailer'));
-v.addEventListener('ended',()=>{b.classList.remove('hidden');label.textContent='Watch Again';v.controls=false});
+// Cinema mode: the page fades to darkness and the film takes the stage
+const stage=document.querySelector('.stage');
+function enterCinema(){document.body.classList.add('cinema');stage.classList.add('theatre');}
+function exitCinema(){v.pause();document.body.classList.remove('cinema');stage.classList.remove('theatre');
+  v.controls=false;b.classList.remove('hidden');label.textContent=v.ended?'Watch Again':'Resume Trailer';}
+document.getElementById('cinemaClose').addEventListener('click',exitCinema);
+document.getElementById('cinemaBg').addEventListener('click',exitCinema);
+addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('cinema'))exitCinema()});
+v.addEventListener('ended',()=>setTimeout(exitCinema,1800));
 
 // Reveal on scroll
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
