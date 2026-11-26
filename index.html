@@ -92,6 +92,15 @@ h2{font-weight:400;font-size:clamp(36px,5vw,58px);text-align:center;line-height:
 .epigraph .orn{display:block;color:var(--gold);font-size:14px;letter-spacing:0;opacity:.9;text-shadow:0 0 12px rgba(255,210,130,.9);margin:-37px auto 14px;width:28px;background:var(--night);position:relative;z-index:1}
 .epigraph .orn:last-child{margin:14px auto -33px}
 
+
+/* LIBERTE */
+.liberte{margin:10px auto 54px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.lib-word{font-style:italic;font-weight:300;font-size:clamp(56px,8vw,96px);letter-spacing:.06em;color:var(--gold-soft);
+  text-shadow:0 0 22px rgba(255,214,140,.65),0 0 70px rgba(255,180,80,.3);animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.72;text-shadow:0 0 18px rgba(255,214,140,.45),0 0 50px rgba(255,180,80,.2)}50%{opacity:1;text-shadow:0 0 28px rgba(255,220,150,.85),0 0 90px rgba(255,180,80,.4)}}
+.lib-note{color:var(--muted);font-size:19px;font-style:italic;letter-spacing:.05em;max-width:520px;text-align:center}
+.liberte::before{content:"";width:1px;height:60px;background:linear-gradient(transparent,rgba(243,207,134,.8));margin-bottom:6px}
+
 /* NAME */
 .name{text-align:center}
 .name .ar{font-size:clamp(90px,14vw,170px);color:var(--gold-soft);line-height:1.2}
@@ -209,6 +218,10 @@ footer .ar{font-size:34px;color:var(--gold);display:block;margin-bottom:8px}
   <section class="closing reveal">
     <blockquote>A seeker. A musician. A mystic.<br>A flame that no shadow could put out.</blockquote>
     <p class="closing-note">A short film in music and light, on a young soul and the courage her light would become.</p>
+    <div class="liberte" aria-label="Liberté">
+      <span class="lib-word" lang="fr">Liberté…</span>
+      <span class="lib-note">The freedom of a soul that had already found the Light.</span>
+    </div>
     <a class="cta" style="opacity:1;animation:none" href="#trailer"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg>Watch Again</a>
   </section>
 </main>
